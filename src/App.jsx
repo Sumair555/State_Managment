@@ -114,35 +114,45 @@
 
 
 
-
 import { useState } from "react";
 
-export default function App(){
-  const[count, setCount] = useState(0);
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [history, setHistory] = useState([]);
 
-  function handleIncrement(){
+  function handleIncrement() {
     setCount(count + 1);
+    setHistory([...history, "Increment"]);
   }
 
-  function handleDecrement(){
+  function handleDecrement() {
     setCount(count - 1);
+    setHistory([...history, "Decrement"]);
   }
 
-  function handleReset(){
+  function handleReset() {
     setCount(0);
+    setHistory([...history, "Reset"]);
   }
-
 
   return (
-  <div className="flex min-h-screen items-center justify-center">
-     <div>
-      <h1 className="text-2xl font-bold bg-red-300 ">Counter : {count}</h1>
-       <div className="pt-5">
-         <button className="p-2 border-2 bg-green-200 " onClick={handleIncrement} >Increment</button>
-         <button className="p-2 border-2 bg-green-200 " onClick={handleDecrement} >Decrement</button>
-         <button className="p-2 border-2 bg-green-200 " onClick={handleReset} >Reset</button>
+    <div className="flex min-h-screen items-center justify-center">
+      <div>
+        <h1 className="text-2xl font-bold bg-red-300">Counter : {count}</h1>
+        <div className="pt-5">
+          <button className="p-2 border-2 bg-green-200" onClick={handleIncrement}>Increment</button>
+          <button className="p-2 border-2 bg-green-200" onClick={handleDecrement}>Decrement</button>
+          <button className="p-2 border-2 bg-green-200" onClick={handleReset}>Reset</button>
+        </div>
+        <div className="pt-5">
+          <h2 className="text-lg font-semibold">Action History:</h2>
+          <ul className="list-disc list-inside">
+            {history.map((action, index) => (
+              <li key={index}>{action}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-     </div>
-  </div>
+    </div>
   );
 }
