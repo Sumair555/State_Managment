@@ -71,10 +71,10 @@ pyfun(3)
       
 
       {/* RIGHT SIDE */}
-      <div className="w-1/4 bg-white p-6">
-        <h3 className="text-md font-semibold text-gray-800 mb-4">Questions(40)</h3>
+      <div className="w-1/4 bg-white p-12">
+        <h3 className="text-md font-semibold text-gray-800 mb-4 pt-20">Questions(30)</h3>
 
-        <div className="grid grid-cols-5 gap-2 text-center text-sm mb-6">
+        <div className="grid grid-cols-5 gap-1 text-center text-sm mb-16">
           {Array.from({ length: totalQuestions }, (_, i) => {
             const status = questionStatus[i] || "default";
             return (
